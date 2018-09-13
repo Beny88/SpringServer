@@ -28,13 +28,13 @@ public class ListaUzytkownikow {
 		System.out.println("Rozmiar listy to: "+listaUzytkownikow.size());
 		
 		for (int i = 0; i < listaUzytkownikow.size(); i++) {
-			System.out.println(String.format("Uzytkownik nr: %s %s", i, listaUzytkownikow.get(i).podajSwojeDane()));
+			//System.out.println(String.format("Uzytkownik nr: %s %s", i, listaUzytkownikow.get(i).podajSwojeDane()));
 		}
 		
 		List<Uzytkownik> listaMarcinow = listaUzytkownikow.stream().filter(uzytkownik -> uzytkownik.getImie().equals("Marcin")).collect(Collectors.toList());
 
 		
-		listaUzytkownikow.stream().forEach(uzytkownik -> String.format("Uzytkownik %s", uzytkownik.podajSwojeDane()));
+		//listaUzytkownikow.stream().forEach(uzytkownik -> String.format("Uzytkownik %s", uzytkownik.podajSwojeDane()));
 		
 		listaUzytkownikow.stream().forEach(uzytkownik -> {
 			//cos tu robisz
