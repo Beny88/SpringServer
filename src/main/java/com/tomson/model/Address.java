@@ -1,17 +1,17 @@
-package com.tomson;
+package com.tomson.model;
 
-public class Adres {
+public class Address {
 	
 	private String ulica;
 	private String nrUlicy;
 	private String postCode;
 	private String miasto;
 	
-	public Adres() {
+	public Address() {
 		
 	}
 	
-	/*public Adres(String ulica, String nrUlicy, String postCode, String miasto) {
+	/*public Address(String ulica, String nrUlicy, String postCode, String miasto) {
 		this.ulica = ulica;
 		this.nrUlicy = nrUlicy;
 		this.postCode = postCode;
