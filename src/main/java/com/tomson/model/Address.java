@@ -1,22 +1,29 @@
 package com.tomson.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
+@Entity
 public class Address {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
 	private String ulica;
 	private String nrUlicy;
 	private String postCode;
 	private String miasto;
-	
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	@JsonIgnore
+	private User user;
+
 	public Address() {
 		
 	}
-	
-	/*public Address(String ulica, String nrUlicy, String postCode, String miasto) {
-		this.ulica = ulica;
-		this.nrUlicy = nrUlicy;
-		this.postCode = postCode;
-		this.miasto = miasto;
-	}*/
 
 	public String getUlica() {
 		return ulica;
@@ -50,5 +57,11 @@ public class Address {
 		this.miasto = miasto;
 	}
 
-	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

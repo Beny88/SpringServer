@@ -1,30 +1,13 @@
-package com.tomson.model;
+package com.tomson.dto;
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+/**
+ * Data Transfer object
+ */
+public class CreateUserDto {
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
-
-    @OneToMany(mappedBy = "user")
-    private List<Address> addressList;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -57,14 +40,4 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public List<Address> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
 }
-
-

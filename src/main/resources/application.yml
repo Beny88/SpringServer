@@ -1,2 +1,7 @@
 server:
   port: 8090
+spring:
+  datasource:
+    username: root
+    password: fdgjyraFESCnte
+    url: jdbc:mysql://54.38.187.126:3310/tomson

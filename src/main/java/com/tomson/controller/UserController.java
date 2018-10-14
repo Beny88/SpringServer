@@ -1,9 +1,14 @@
 package com.tomson.controller;
 
+import com.tomson.dto.CreateUserDto;
+import com.tomson.dto.UpdateUserDto;
+import com.tomson.model.Address;
 import com.tomson.model.User;
 import com.tomson.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -14,15 +19,31 @@ public class UserController {
 
 	@GetMapping(value = "/{id}")
 	public User getUser(@PathVariable(value = "id") Long userId) {
-
 		return userService.getUser(userId);
 	}
 
-	//Dodaj pobieranie wszytkich uzytkownikow
+	@GetMapping
+	public List<User> getUsers() {
+		return userService.getUsers();
+	}
 
+	@PostMapping
+	public User createUser(@RequestBody final CreateUserDto user) { return userService.createUser(user); }
 
-	//Dodaj towrzenie uzytkownika
+	@DeleteMapping(value = "/{id}")
+	public void deleteUser(@PathVariable(value = "id") Long userId) { userService.deleteUser(userId);}
+
+	@PutMapping
+	public User editUser(@RequestBody final UpdateUserDto user) {
+		return userService.updateUser(user);
+	}
+
+	@GetMapping("/{id}/address")
+	public List<Address> getAddressForUser(@PathVariable(value = "id") Long userId) {
+		return userService.getAddressForUser(userId);
+	}
 }
+
 
 
 
