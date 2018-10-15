@@ -6,6 +6,7 @@ import com.tomson.model.Address;
 import com.tomson.model.User;
 import com.tomson.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,9 +39,14 @@ public class UserController {
 		return userService.updateUser(user);
 	}
 
-	@GetMapping("/{id}/address")
-	public List<Address> getAddressForUser(@PathVariable(value = "id") Long userId) {
+	@GetMapping("/{userId}/address")
+	public List<Address> getAddressForUser(@PathVariable(value = "userId") Long userId) {
 		return userService.getAddressForUser(userId);
+	}
+
+	@GetMapping("/{userId}/address/{addressId}")
+	public Address getAddress(@PathVariable Long userId, @PathVariable Long addressId ){
+		return userService.getOneAddressForUser(userId,addressId);
 	}
 }
 

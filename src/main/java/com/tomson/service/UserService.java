@@ -4,6 +4,7 @@ import com.tomson.dto.CreateUserDto;
 import com.tomson.dto.UpdateUserDto;
 import com.tomson.model.Address;
 import com.tomson.model.User;
+import com.tomson.repository.AddressRepository;
 import com.tomson.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +15,11 @@ import java.util.List;
 public class UserService {
 
     private UserRepository userRepository;
+    private AddressRepository addressRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
+        this.addressRepository = addressRepository;
     }
 
     public User getUser(final Long userId) {
@@ -59,5 +62,9 @@ public class UserService {
 
     public List<Address> getAddressForUser(Long userId) {
         return userRepository.findOne(userId).getAddressList();
+    }
+
+    public Address getOneAddressForUser(Long userId, Long addressId){
+        return addressRepository.findOneByIdAndUserId(addressId, userId);
     }
 }
