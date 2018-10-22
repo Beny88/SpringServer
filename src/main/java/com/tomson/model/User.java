@@ -1,9 +1,18 @@
 package com.tomson.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Where;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@Where(clause = "deleted_on is null")
 public class User {
 
     @Id
@@ -14,6 +23,18 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
+
+    @CreatedDate
+    @Column(updatable = false)
+    @JsonIgnore
+    private ZonedDateTime createdOn;
+
+    @LastModifiedDate
+    @JsonIgnore
+    private ZonedDateTime updatedOn;
+
+    @JsonIgnore
+    private ZonedDateTime deletedOn;
 
     @OneToMany(mappedBy = "user")
     private List<Address> addressList;

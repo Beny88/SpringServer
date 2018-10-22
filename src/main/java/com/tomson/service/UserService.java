@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Service
 public class UserService {
 
@@ -23,7 +24,7 @@ public class UserService {
     }
 
     public User getUser(final Long userId) {
-        return userRepository.findOne(userId);
+        return userRepository.findById(userId).orElse(null);
     }
 
     public List<User> getUsers() {
@@ -42,26 +43,22 @@ public class UserService {
 
     @Transactional
     public void deleteUser(final Long userId){
-        userRepository.delete(userId);
+        userRepository.deleteById(userId);
     }
 
     @Transactional
     public User updateUser(final UpdateUserDto updateUserDto) {
-        User userInDb = userRepository.findOne(updateUserDto.getId());
+        User user = userRepository.findById(updateUserDto.getId()).orElseThrow(() -> new NullPointerException());
 
-        if(userInDb != null) {
-            userInDb.setFirstName(updateUserDto.getFirstName());
-            userInDb.setLastName(updateUserDto.getLastName());
-            userInDb.setPhone(updateUserDto.getPhone());
-            userInDb.setEmail(updateUserDto.getEmail());
-            return userInDb;
-        } else {
-            throw new NullPointerException();
-        }
+        user.setFirstName(updateUserDto.getFirstName());
+        user.setLastName(updateUserDto.getLastName());
+        user.setPhone(updateUserDto.getPhone());
+        user.setEmail(updateUserDto.getEmail());
+        return user;
     }
 
     public List<Address> getAddressForUser(Long userId) {
-        return userRepository.findOne(userId).getAddressList();
+        return userRepository.findById(userId).orElseThrow(() -> new NullPointerException()).getAddressList();
     }
 
     public Address getOneAddressForUser(Long userId, Long addressId){
