@@ -1,12 +1,13 @@
 package com.tomson.controller;
 
+import com.tomson.dto.CreateAddressDto;
+import com.tomson.dto.UpdateAddressDto;
 import com.tomson.dto.CreateUserDto;
 import com.tomson.dto.UpdateUserDto;
 import com.tomson.model.Address;
 import com.tomson.model.User;
 import com.tomson.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +40,11 @@ public class UserController {
 		return userService.updateUser(user);
 	}
 
+	@PostMapping("/{userId}/address")
+	public Address createAddress(@RequestBody final CreateAddressDto address, @PathVariable Long userId){
+		return userService.createAddress(address, userId);
+	}
+
 	@GetMapping("/{userId}/address")
 	public List<Address> getAddressForUser(@PathVariable(value = "userId") Long userId) {
 		return userService.getAddressForUser(userId);
@@ -48,13 +54,19 @@ public class UserController {
 	public Address getAddress(@PathVariable Long userId, @PathVariable Long addressId ){
 		return userService.getOneAddressForUser(userId,addressId);
 	}
+	@PutMapping("/{userId}/address")
+	public Address updateAddress(@RequestBody final UpdateAddressDto address, @PathVariable Long userId){
+		return userService.updateAddress(address, userId);
+	}
+
 }
 
 
-
-
-
-
+/*
+1. Cchemy posiadac mozliwosc dodania  mieszkania lub  mieszkan do kontkretnego uzytkownika
+2. Uzytkonwik ma  mozliwosc dodania n pokoi do mieszkania
+3. uzytkownik ma  mozliwosc dodania  n itemkow do pokoju
+*/
 
 
 
