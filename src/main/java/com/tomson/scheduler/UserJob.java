@@ -10,7 +10,7 @@ public class UserJob {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserJob.class);
 
-    @Scheduled(cron = "0 0/1 * 1/1 * ?")  //cron expression = znacznik czasowy co ile gdzie  i jak http://www.cronmaker.com/
+    @Scheduled(cron = "0 0 0/1 1/1 * ?")  //cron expression = znacznik czasowy co ile gdzie  i jak http://www.cronmaker.com/
     public void userTask() {
         LOGGER.error("error userTask");
         LOGGER.info("info cos tam");
