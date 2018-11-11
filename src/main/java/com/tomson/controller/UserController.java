@@ -66,6 +66,7 @@ public class UserController {
 1. Cchemy posiadac mozliwosc dodania  mieszkania lub  mieszkan do kontkretnego uzytkownika
 2. Uzytkonwik ma  mozliwosc dodania n pokoi do mieszkania
 3. uzytkownik ma  mozliwosc dodania  n itemkow do pokoju
+
 */
 
 

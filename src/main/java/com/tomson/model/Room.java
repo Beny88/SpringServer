@@ -14,16 +14,23 @@ import java.util.List;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = "deleted_on is null")
-public class Property {
+public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String houseType;
+    private String roomType;
 
-   // private String userId;
-   // private Long idAddress;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="property_id")
+    @JsonIgnore
+    private Property property;
+
+    @OneToMany(mappedBy= "room")
+    private List<Item> itemList;
+
+
 
     @CreatedDate
     @Column(updatable = false)
@@ -37,10 +44,6 @@ public class Property {
     @JsonIgnore
     private ZonedDateTime deletedOn;
 
-    @OneToMany(mappedBy = "property")
-    private List<Room> roomList;
-
-
     public Long getId() {
         return id;
     }
@@ -49,35 +52,27 @@ public class Property {
         this.id = id;
     }
 
-    public String getHouseType() {
-        return houseType;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setHouseType(String houseType) {
-        this.houseType = houseType;
-    }
-/*
-    public String getUserId() {
-        return userId;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public Property getProperty() {
+        return property;
     }
 
-    public Long getIdAddress() {
-        return idAddress;
+    public void setProperty(Property property) {
+        this.property = property;
     }
 
-    public void setIdAddress(Long idAddress) {
-        this.idAddress = idAddress;
-    }
-*/
-    public List<Room> getRoomList() {
-        return roomList;
+    public List<Item> getItemList() {
+        return itemList;
     }
 
-    public void setRoomList(List<Room> roomList) {
-        this.roomList = roomList;
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 }

@@ -21,8 +21,12 @@ public class Item {
 
     private String itemName;
     private String itemType;
-    private Integer ammount;
-    private Long idProperty;
+    private Integer itemAmount;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="room_id")
+    @JsonIgnore
+    private Room room;
 
     @CreatedDate
     @Column(updatable = false)
@@ -36,10 +40,6 @@ public class Item {
     @JsonIgnore
     private ZonedDateTime deletedOn;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_property")
-    @JsonIgnore
-    private Property property;
 
     public Long getId() {
         return id;
@@ -65,27 +65,19 @@ public class Item {
         this.itemType = itemType;
     }
 
-    public Integer getAmmount() {
-        return ammount;
+    public Integer getItemAmount() {
+        return itemAmount;
     }
 
-    public void setAmmount(Integer ammount) {
-        this.ammount = ammount;
+    public void setItemAmount(Integer itemAmount) {
+        this.itemAmount = itemAmount;
     }
 
-    public Long getIdProperty() {
-        return idProperty;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setIdProperty(Long idProperty) {
-        this.idProperty = idProperty;
-    }
-
-    public Property getProperty() {
-        return property;
-    }
-
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

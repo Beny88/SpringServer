@@ -73,9 +73,7 @@ public class UserService {
     @Transactional
     public Address updateAddress(final UpdateAddressDto updateAddressDto, final Long userId) {
         Address address = getOneAddressForUser(userId, updateAddressDto.getId());
-//czemu nie dziala znalezienie po sddress id i userid??
-        //sprawdzenie po user id jakies security
-// adressid should be id in dto
+
 
         address.setUlica(updateAddressDto.getUlica());
         address.setNrUlicy(updateAddressDto.getNrUlicy());
