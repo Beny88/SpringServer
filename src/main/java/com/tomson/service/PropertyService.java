@@ -27,6 +27,9 @@ public class PropertyService {
         this.roomRepository = roomRepository;
         this.itemRepository = itemRepository;
     }
+    public Property getPropery (final Long propertyId) {
+        return propertyRepository.findById(propertyId).orElse(null);
+    }
 
     @Transactional
     public Property createProperty(final CreatePropertyDto createPropertyDto){
@@ -37,8 +40,10 @@ public class PropertyService {
     }
 
     @Transactional
-    public Room createRoom(final CreateRoomDto createRoomDto){
+    public Room createRoom(final CreateRoomDto createRoomDto, final Long propertyId){
         final Room room = new Room();
+        final Property property = propertyRepository.findById(propertyId).orElseThrow(() -> new NullPointerException());
+        room.setProperty(property);
         room.setRoomType(createRoomDto.getRoomType());
 
         return roomRepository.save(room);
