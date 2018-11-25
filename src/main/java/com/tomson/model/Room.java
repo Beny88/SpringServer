@@ -21,6 +21,7 @@ public class Room {
     private Long id;
 
     private String roomType;
+    private Integer ammount;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="property_id")
@@ -74,5 +75,13 @@ public class Room {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public Integer getAmmount() {
+        return ammount;
+    }
+
+    public void setAmmount(Integer ammount) {
+        this.ammount = ammount;
     }
 }

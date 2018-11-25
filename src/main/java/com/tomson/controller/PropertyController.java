@@ -9,10 +9,10 @@ import com.tomson.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.tomson.service.PropertyService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/property")
-
 public class PropertyController {
 
     @Autowired
@@ -23,16 +23,20 @@ public class PropertyController {
 
     @GetMapping(value = "/{id}")
     public Property getProperty (@PathVariable(value = "id") Long propertyId) {
-        return propertyService.getPropery(propertyId);
+        return propertyService.getProperty(propertyId);
+    }
+    @GetMapping("/{propertyId}/room")
+    public List<Room> getRoomForProperty(@PathVariable(value = "propertyId") Long propertyId) {
+        return propertyService.getRoomForProperty(propertyId);
     }
 
     @PostMapping("/{propertyId}/room")
-    public Room createRoom(@RequestBody final CreateRoomDto room, @PathVariable Long propertyId) {
+    public Room createRoom(@RequestBody final CreateRoomDto room, @PathVariable  Long propertyId) {
         return propertyService.createRoom(room, propertyId);
     }
 
-    @PostMapping("/room/item")
-    public Item createItem(@RequestBody final CreateItemDto item) {
-        return propertyService.createItem(item);
+    @PostMapping("/{roomId}/item")
+    public Item createItem(@RequestBody final CreateItemDto item, @PathVariable  Long roomId) {
+        return propertyService.createItem(item, roomId);
     }
 }

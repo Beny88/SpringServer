@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.tomson.repository.PropertyRepository;
 
+import java.util.List;
+
 
 @Service
 public class PropertyService {
@@ -27,8 +29,12 @@ public class PropertyService {
         this.roomRepository = roomRepository;
         this.itemRepository = itemRepository;
     }
-    public Property getPropery (final Long propertyId) {
+    public Property getProperty (final Long propertyId) {
         return propertyRepository.findById(propertyId).orElse(null);
+    }
+
+    public List<Room> getRoomForProperty (Long propertyId){
+        return propertyRepository.findById(propertyId).orElseThrow(()-> new NullPointerException()).getRoomList();
     }
 
     @Transactional
@@ -45,13 +51,16 @@ public class PropertyService {
         final Property property = propertyRepository.findById(propertyId).orElseThrow(() -> new NullPointerException());
         room.setProperty(property);
         room.setRoomType(createRoomDto.getRoomType());
+        room.setAmmount(createRoomDto.getAmmount());
 
         return roomRepository.save(room);
     }
 
     @Transactional
-    public Item createItem(final CreateItemDto createItemDto){
+    public Item createItem(final CreateItemDto createItemDto, final Long roomId){
         final Item item = new Item();
+        final Room room = roomRepository.findById(roomId).orElseThrow(() -> new NullPointerException());
+        item.setRoom(room);
         item.setItemName(createItemDto.getItemName());
         item.setItemType(createItemDto.getItemType());
         item.setItemAmount(createItemDto.getItemAmount());
