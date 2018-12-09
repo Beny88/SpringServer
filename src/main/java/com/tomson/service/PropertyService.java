@@ -1,33 +1,34 @@
 package com.tomson.service;
 
-
-
-
+import com.tomson.external.TypeService;
 import com.tomson.model.Property;
 import com.tomson.model.Room;
 import com.tomson.model.Item;
 import com.tomson.dto.CreatePropertyDto;
 import com.tomson.dto.CreateRoomDto;
 import com.tomson.dto.CreateItemDto;
+import com.tomson.model.Typeable;
 import com.tomson.repository.ItemRepository;
 import com.tomson.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.tomson.repository.PropertyRepository;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 @Service
 public class PropertyService {
     private PropertyRepository propertyRepository;
     private RoomRepository roomRepository;
     private ItemRepository itemRepository;
+    private TypeService typeService;
 
-    public PropertyService(PropertyRepository propertyRepository, RoomRepository roomRepository,ItemRepository itemRepository) {
+    public PropertyService(PropertyRepository propertyRepository, RoomRepository roomRepository,ItemRepository itemRepository, TypeService typeService) {
         this.propertyRepository = propertyRepository;
         this.roomRepository = roomRepository;
         this.itemRepository = itemRepository;
+        this.typeService = typeService;
     }
     public Property getProperty (final Long propertyId) {
         return propertyRepository.findById(propertyId).orElse(null);
@@ -66,4 +67,20 @@ public class PropertyService {
         item.setItemAmount(createItemDto.getItemAmount());
         return itemRepository.save(item);
     }
+
+    @Transactional
+    public List<String> getAllTypes() {
+        final List<Typeable> allObjectList = new ArrayList<>();
+
+        //tutal w  petlach poddowaja  wsyztkie objety do tej listy
+        propertyRepository.findAll().forEach(property -> {
+            allObjectList.add(property);
+
+            allObjectList.addAll(property.getRoomList());
+
+            property.getRoomList().forEach(room -> allObjectList.addAll(room.getItemList()));
+        });
+        return typeService.getAllObjectTypes(allObjectList);
+    }
 }
+

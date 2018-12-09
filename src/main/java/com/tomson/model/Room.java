@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = "deleted_on is null")
-public class Room {
+public class Room implements Typeable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -83,5 +83,10 @@ public class Room {
 
     public void setAmmount(Integer ammount) {
         this.ammount = ammount;
+    }
+
+    @Override
+    public String getType() {
+        return roomType;
     }
 }

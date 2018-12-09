@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = "deleted_on is null")
-public class Item {
+public class Item implements Typeable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -79,5 +79,10 @@ public class Item {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    @Override
+    public String getType() {
+        return itemType;
     }
 }

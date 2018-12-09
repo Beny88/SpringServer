@@ -6,6 +6,7 @@ import com.tomson.dto.CreateItemDto;
 import com.tomson.model.Property;
 import com.tomson.model.Room;
 import com.tomson.model.Item;
+import com.tomson.model.Typeable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.tomson.service.PropertyService;
@@ -38,5 +39,9 @@ public class PropertyController {
     @PostMapping("/{roomId}/item")
     public Item createItem(@RequestBody final CreateItemDto item, @PathVariable  Long roomId) {
         return propertyService.createItem(item, roomId);
+    }
+    @GetMapping("/types")
+    public List<String> getAllTypes() {
+        return propertyService.getAllTypes();
     }
 }
