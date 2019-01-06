@@ -13,6 +13,17 @@ public class MicroserviceAClient {
     private static final String MICROSERVICE_A_URL = "http://localhost:8090";
     private static final String MICROSERVICE_A_USER_URL = "user";
 
+    private MicroserviceAFeignClient microserviceAFeignClient;
+
+    public MicroserviceAClient(MicroserviceAFeignClient microserviceAFeignClient) {
+        this.microserviceAFeignClient = microserviceAFeignClient;
+    }
+
+    public void getUserViaFeignClient(final Long userId) {
+        microserviceAFeignClient.getUser(userId).ifPresent(response -> log.info(response.toString()));
+    }
+
+    //REST Template Conection Serv to Serv Without List of Servers from Eureka
     public void getUser(final Long userId) {
         RestTemplate restTemplate = new RestTemplate();
 

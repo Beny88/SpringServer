@@ -7,6 +7,7 @@ import com.tomson.microservicea.dto.UpdateUserDto;
 import com.tomson.microservicea.model.Address;
 import com.tomson.microservicea.model.User;
 import com.tomson.microservicea.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
 
 	@Autowired
@@ -21,6 +23,7 @@ public class UserController {
 
 	@GetMapping(value = "/{id}")
 	public User getUser(@PathVariable(value = "id") Long userId) {
+        log.info("getUser for id: {}", userId);
 		return userService.getUser(userId);
 	}
 

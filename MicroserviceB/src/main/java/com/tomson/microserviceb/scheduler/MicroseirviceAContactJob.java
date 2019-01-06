@@ -25,6 +25,6 @@ public class MicroseirviceAContactJob {
 
         List<Long> idList = Arrays.asList(1L, 2L, 7L, 12L);
 
-        idList.forEach(id ->  microserviceAClient.getUser(id));
+        idList.forEach(id ->  microserviceAClient.getUserViaFeignClient(id));
     }
 }
