@@ -2,92 +2,30 @@ package com.tomson.microservicea.service;
 
 import com.tomson.microservicea.dto.CreateAddressDto;
 import com.tomson.microservicea.dto.CreateUserDto;
+import com.tomson.microservicea.dto.UpdateAddressDto;
 import com.tomson.microservicea.dto.UpdateUserDto;
 import com.tomson.microservicea.model.Address;
-import com.tomson.microservicea.repository.AddressRepository;
-import com.tomson.microservicea.repository.UserRepository;
 import com.tomson.microservicea.model.User;
-import com.tomson.microservicea.dto.UpdateAddressDto;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+public interface UserService {
 
-@Service
-public class UserService {
+    User getUser(final Long userId);
 
-    private UserRepository userRepository;
-    private AddressRepository addressRepository;
+    List<User> getUsers();
 
-    public UserService(UserRepository userRepository, AddressRepository addressRepository) {
-        this.userRepository = userRepository;
-        this.addressRepository = addressRepository;
-    }
+    User createUser(final CreateUserDto createUserDto);
 
-    public User getUser(final Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new NullPointerException("500"));
-    }
+    void deleteUser(final Long userId);
 
-    public List<User> getUsers() {
-        return userRepository.findAll();
-    }
+    User updateUser(final UpdateUserDto updateUserDto);
 
-    @Transactional
-    public User createUser(final CreateUserDto createUserDto){
-        final User user = new User();
-        user.setFirstName(createUserDto.getFirstName());
-        user.setLastName(createUserDto.getLastName());
-        user.setEmail(createUserDto.getEmail());
-        user.setPhone(createUserDto.getPhone());
-        return userRepository.save(user);
-    }
+    Address createAddress(final CreateAddressDto createAddressDto, final Long userId);
 
-    @Transactional
-    public void deleteUser(final Long userId){
-        userRepository.deleteById(userId);
-    }
+    Address updateAddress(final UpdateAddressDto updateAddressDto, final Long userId);
 
-    @Transactional
-    public User updateUser(final UpdateUserDto updateUserDto) {
-        User user = userRepository.findById(updateUserDto.getId()).orElseThrow(() -> new NullPointerException());
+    List<Address> getAddressForUser(Long userId);
 
-        user.setFirstName(updateUserDto.getFirstName());
-        user.setLastName(updateUserDto.getLastName());
-        user.setPhone(updateUserDto.getPhone());
-        user.setEmail(updateUserDto.getEmail());
-        return user;
-    }
-
-    @Transactional
-    public Address createAddress(final CreateAddressDto createAddressDto, final Long userId) {
-        final Address address = new Address();
-        final User user = userRepository.findById(userId).orElseThrow(() -> new NullPointerException());
-        address.setUser(user);
-        address.setUlica(createAddressDto.getUlica());
-        address.setNrUlicy(createAddressDto.getNrUlicy());
-        address.setPostCode(createAddressDto.getPostCode());
-        address.setMiasto(createAddressDto.getMiasto());
-        return addressRepository.save(address);
-    }
-
-    @Transactional
-    public Address updateAddress(final UpdateAddressDto updateAddressDto, final Long userId) {
-        Address address = getOneAddressForUser(userId, updateAddressDto.getId());
-
-
-        address.setUlica(updateAddressDto.getUlica());
-        address.setNrUlicy(updateAddressDto.getNrUlicy());
-        address.setPostCode(updateAddressDto.getPostCode());
-        address.setMiasto(updateAddressDto.getMiasto());
-        return address;
-    }
-
-    public List<Address> getAddressForUser(Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new NullPointerException()).getAddressList();
-    }
-
-    public Address getOneAddressForUser(Long userId, Long addressId){
-        return addressRepository.findOneByIdAndUserId(addressId, userId).orElseThrow(() -> new NullPointerException("Niema takiego adresu dla podanego uzytkownika"));
-    }
+    Address getOneAddressForUser(Long userId, Long addressId);
 }

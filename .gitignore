@@ -2,3 +2,5 @@
 .settings/
 .idea/
 EurekaService/target/
+MicroserviceA/target/
+MicroserviceB/target/
