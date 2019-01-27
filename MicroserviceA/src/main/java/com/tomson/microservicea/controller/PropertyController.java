@@ -1,14 +1,15 @@
 package com.tomson.microservicea.controller;
 
 import com.tomson.microservicea.dto.CreateItemDto;
-import com.tomson.microservicea.dto.CreateRoomDto;
 import com.tomson.microservicea.dto.CreatePropertyDto;
+import com.tomson.microservicea.dto.CreateRoomDto;
 import com.tomson.microservicea.model.Item;
-import com.tomson.microservicea.model.Room;
 import com.tomson.microservicea.model.Property;
+import com.tomson.microservicea.model.Room;
 import com.tomson.microservicea.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController

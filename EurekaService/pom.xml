@@ -38,13 +38,13 @@
             <version>2.0.2.RELEASE</version>
         </dependency>
 
-                <dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-parent</artifactId>
-                    <version>Finchley.SR2</version>
-                    <type>pom</type>
-                    <scope>import</scope>
-                </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-parent</artifactId>
+            <version>Finchley.SR2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
         <dependency>

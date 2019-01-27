@@ -83,6 +83,7 @@ public class User {
         return addressList;
     }
 
+
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
     }

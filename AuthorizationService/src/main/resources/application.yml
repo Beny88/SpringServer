@@ -1,0 +1,27 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: AuthorizationService
+  datasource:
+    username: root
+    password: fdgjyraFESCnte
+    url: jdbc:mysql://54.38.187.126:3310/TomsonAuthorizationService
+  jpa:
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: false
+    hibernate:
+      use-new-id-generator-mappings: false
+      
+eureka:
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.int}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

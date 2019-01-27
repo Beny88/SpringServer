@@ -20,6 +20,10 @@ eureka:
 zuul:
   prefix: /api
   routes:
+    auth-service:
+      path: /auth/**
+      serviceId: AuthorizationService
+      sensitiveHeaders:
     MicroserviceA:
       path: /MicroA/**
       serviceId: Microservice-A
