@@ -61,54 +61,6 @@ public class UserController {
 	public Address updateAddress(@RequestBody final UpdateAddressDto address, @PathVariable Long userId){
 		return userService.updateAddress(address, userId);
 	}
-
 }
 /*
-
-Stworz endpoint w  propertyController  ktory przesle  liste stringow, do lsity dodaj typy kazdego proerty  kazdego rooma  kazdego itema
-https://www.tutorialspoint.com/java/java_inheritance.htm
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-	@GetMapping(value = "/hello")
-	public String getHello() {
-		return "<b>Hello World</b>";
-	}
-
-
-	@PostMapping()
-	public User createUser(@RequestBody User user) {
-
-		user.setId(123123L);
-		//uzytkownikList.add(user);
-
-		return user;
-	}
-
-	@GetMapping()
-	public List<User> getUserList() {
-		return null; //uzytkownikList;
-	}
- */
