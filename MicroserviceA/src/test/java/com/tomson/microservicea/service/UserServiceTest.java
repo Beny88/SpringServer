@@ -1,8 +1,11 @@
 package com.tomson.microservicea.service;
 
+import com.tomson.microservicea.dto.CreateAddressDto;
 import com.tomson.microservicea.dto.CreateUserDto;
 import com.tomson.microservicea.dto.UpdateUserDto;
+import com.tomson.microservicea.model.Address;
 import com.tomson.microservicea.model.User;
+import com.tomson.microservicea.repository.AddressRepository;
 import com.tomson.microservicea.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,11 +26,13 @@ public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+    @Mock
+    private AddressRepository addressRepository;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        userService = new UserServiceImpl(userRepository, null);
+        userService = new UserServiceImpl(userRepository, addressRepository);
     }
 
     @Test
@@ -132,5 +137,38 @@ public class UserServiceTest {
         userService.deleteUser(userId);
 
         Mockito.verify(userRepository, Mockito.times(1)).deleteById(userId);
+    }
+
+    @Test
+    public void createAddressTest(){
+        final Long userId = 1L;
+
+        User user = new User();
+        user.setId(userId);
+
+        Address address = new Address();
+        address.setId(userId);
+        address.setUser(user);
+        address.setNrUlicy("11");
+        address.setUlica("SpringMeadows");
+        address.setMiasto("Cleyton");
+        address.setPostCode("BB5");
+
+        Mockito.when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        Mockito.when(addressRepository.save(Mockito.any(Address.class))).thenReturn(address);
+
+        CreateAddressDto createAddressDto = new CreateAddressDto();
+
+        createAddressDto.setNrUlicy("11");
+        createAddressDto.setUlica("SpringMeadows");
+        createAddressDto.setMiasto("Cleyton");
+        createAddressDto.setPostCode("BB5");
+
+        Address result = userService.createAddress(createAddressDto, userId);
+
+        Assert.assertEquals(createAddressDto.getNrUlicy(),result.getNrUlicy());
+        Assert.assertEquals(createAddressDto.getUlica(), result.getUlica());
+        Assert.assertEquals(createAddressDto.getMiasto(), result.getMiasto());
+        Assert.assertEquals(createAddressDto.getPostCode(), result.getPostCode());
     }
 }

@@ -1,3 +1,0 @@
-ALTER TABLE Properties RENAME TO property;
-ALTER TABLE Items RENAME TO item;
-ALTER TABLE Rooms RENAME TO room;

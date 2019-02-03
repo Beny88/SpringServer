@@ -1,14 +1,13 @@
 package com.tomson.microservicea.controller;
 
 import com.tomson.microservicea.dto.CreateAddressDto;
-import com.tomson.microservicea.dto.UpdateAddressDto;
 import com.tomson.microservicea.dto.CreateUserDto;
+import com.tomson.microservicea.dto.UpdateAddressDto;
 import com.tomson.microservicea.dto.UpdateUserDto;
 import com.tomson.microservicea.model.Address;
 import com.tomson.microservicea.model.User;
 import com.tomson.microservicea.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
-	@Autowired
 	private UserService userService;
+
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping(value = "/{id}")
 	public User getUser(@PathVariable(value = "id") Long userId) {
