@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+  height: 120px;
+  background-color: purple;
+}
+
+.polowka1 {
+  width: 45%;
+  float: left;
+  height: 50px;
+  background-color: blue;
+}
+
+.polowka2 {
+  width: 45%;
+  float: left;
+  height: 50px;
+  background-color: azure;
+}
+
+.polowka3 {
+  width: 11%;
+  float: left;
+  height: 50px;
+  background-color: chartreuse;
+}
