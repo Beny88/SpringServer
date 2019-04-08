@@ -9,7 +9,12 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  jakasZmienna: string = 'jakasZmienna';
+
   ngOnInit() {
   }
 
+  public getJakisText(): string {
+    return 'jakis string z funkcji';
+  }
 }

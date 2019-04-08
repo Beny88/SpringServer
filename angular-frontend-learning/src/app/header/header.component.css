@@ -5,22 +5,27 @@
 }
 
 .polowka1 {
-  width: 45%;
+  width: 20%;
   float: left;
   height: 50px;
   background-color: blue;
 }
 
 .polowka2 {
-  width: 45%;
+  width: 20%;
   float: left;
   height: 50px;
   background-color: azure;
 }
 
 .polowka3 {
-  width: 11%;
+  width: 20%;
   float: left;
   height: 50px;
   background-color: chartreuse;
+}
+
+.user {
+  width: 24px;
+  margin: 0 auto 0 auto;
 }
