@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class MicroserviceAClient {
 
-    private static final String MICROSERVICE_A_URL = "http://localhost:8090";
+    private static final String MICROSERVICE_A_URL = "http://localhost:8555";
     private static final String MICROSERVICE_A_USER_URL = "user";
 
     private MicroserviceAFeignClient microserviceAFeignClient;

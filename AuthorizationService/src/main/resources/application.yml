@@ -5,9 +5,9 @@ spring:
   application:
     name: AuthorizationService
   datasource:
-    username: root
-    password: fdgjyraFESCnte
-    url: jdbc:mysql://54.38.187.126:3310/TomsonAuthorizationService
+    username: tomson
+    password: T0ms0n2019
+    url: jdbc:mysql://192.168.99.100:3306/Authorization
   jpa:
     properties:
       hibernate:

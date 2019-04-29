@@ -86,6 +86,7 @@ public class Room implements Typeable {
     }
 
     @Override
+    @JsonIgnore
     public String getType() {
         return roomType;
     }

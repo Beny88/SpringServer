@@ -82,6 +82,7 @@ public class Item implements Typeable {
     }
 
     @Override
+    @JsonIgnore
     public String getType() {
         return itemType;
     }

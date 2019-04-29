@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = "deleted_on is null")
-
 public class Address {
 
 	@Id

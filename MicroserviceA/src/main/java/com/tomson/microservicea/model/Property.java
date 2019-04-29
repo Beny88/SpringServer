@@ -82,6 +82,7 @@ public class Property implements Typeable {
     }
 
     @Override
+    @JsonIgnore
     public String getType() {
         return houseType;
     }

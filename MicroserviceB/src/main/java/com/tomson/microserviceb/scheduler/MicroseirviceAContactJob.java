@@ -23,7 +23,7 @@ public class MicroseirviceAContactJob {
     public void userTask() {
         LOGGER.info("dzwonie do micro A");
 
-        List<Long> idList = Arrays.asList(1L, 2L, 7L, 12L);
+        List<Long> idList = Arrays.asList(1L, 2L);
 
         idList.forEach(id ->  microserviceAClient.getUserViaFeignClient(id));
     }

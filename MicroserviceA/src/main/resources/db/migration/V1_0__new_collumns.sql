@@ -1,3 +1,11 @@
+CREATE TABLE tomson.user (
+`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (`id`));
+
+CREATE TABLE tomson.address (
+`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (`id`));
+
 ALTER TABLE `user` ADD COLUMN `created_on` DATETIME;
 ALTER TABLE `user` ADD COLUMN `updated_on` DATETIME;
 ALTER TABLE `user` ADD COLUMN `deleted_on` DATETIME;
