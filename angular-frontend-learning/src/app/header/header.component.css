@@ -5,6 +5,7 @@
   right: 0;
   width: 100%;
   text-align: center;
+  z-index: 10;
 }
 
 .mainHeader {
@@ -12,35 +13,34 @@
   height: 90px;
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  background-color: aqua;
   top: 10px;
   margin: 10px;
   box-sizing: border-box;
 }
 
 .leftPart {
-  max-width: 30%;
-  position: center;
+ width: 33.33%;
+  position: relative;
   float: left;
   height: 90px;
-  background-color: white;
-  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .logo {
   height: 90px;
-  width: 450px;
+  width: 33.33%;
   position: center;
-  background-color: white;
-  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .basketMenu {
-  max-width: 20%;
+  width: 33.33%;
+  position: relative;
   align-items: center;
-  display: flex;
   float: right;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-end;
 }
 .basketItem{
 
