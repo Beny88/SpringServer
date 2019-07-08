@@ -1,0 +1,25 @@
+.small-login {
+  position: absolute;
+  opacity: 0;
+  background:cornflowerblue;
+  width: 200px;
+  right: 0px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.80);
+  transform: translateX(200%);
+  transition: all .25s;
+  padding: 10px 0 10px 10px;
+  z-index: 134;
+  top: 100%;
+  overflow-y: auto;
+}
+
+.small-login-body:hover form{
+  opacity: 1;
+  pointer-events: initial;
+  transform: translate(0%);
+}
+
+.small-login-body {
+  position: relative;
+  padding: 10px 10px 10px 10px;
+}

@@ -1,0 +1,22 @@
+<div class="small-login-body">
+  <a [routerLink]="['login']" >
+    <img src="../../assets/user.png" alt="user" width="30" height="30"/>
+    <form class="small-login">
+      <div>
+        <input type="text" name="username" placeholder="login" [(ngModel)]="login">
+      </div>
+
+      <div>
+        <input type="text" name="password" placeholder="password" [(ngModel)]="password">
+      </div>
+
+      <div>
+        <button (click)="signIn()">Zaloguj Sie >></button>
+      </div>
+      <div>
+        <button (click)="register()">Register >></button>
+      </div>
+    </form>
+  </a>
+</div>
+

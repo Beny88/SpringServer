@@ -19,7 +19,7 @@
 }
 
 .leftPart {
- width: 33.33%;
+  width: 33.33%;
   position: relative;
   float: left;
   height: 90px;
@@ -35,37 +35,98 @@
 
 .basketMenu {
   width: 33.33%;
-  position: relative;
   align-items: center;
   float: right;
   display: flex;
   box-sizing: border-box;
   justify-content: flex-end;
 }
-.basketItem{
-
-  box-sizing: border-box;
+.basketItem {
+  position: relative;
   padding: 10px 10px 10px 10px;
-
 }
+
 .lowerHeader {
   width: 100%;
+  position: relative;
   height: 30px;
   float: bottom;
   background-color: white;
+  box-sizing: border-box;
 }
 
 .lowerHeaderInner {
   width: 420px;
   margin: 0 auto;
   height: 30px;
+  box-sizing: border-box;
+
 }
 
 .lowerPart {
   width: 140px;
   float: left;
-  height: 30px;
-  background-color: white;
+  height: 32px;
+  background-color: red;
   text-align: center;
+  font-size: 16px;
+  margin:0;
+  line-height:2em;
+  box-sizing: border-box;
+}
+
+.list-perfume {
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+.lowerPart ol {
+  list-style-type:none;
+  padding:0;
+  margin:0;
+  background-color:#FFF;
+  text-align:center;
+}
+.lowerPart ol a {
+  display:block;
+  text-decoration:none;
+  color:#000;
+}
+.lowerPart ol > li {
+  float:left;
+  width:140px;
+  margin-left:1px;
+  background-color:red;
+}
+.lowerPart ol > li:first-child {
+  margin-left:0;
+}
+.lowerPart ol > li:hover {
+  background-color:#EEE;
+}
+.lowerPart ol > li:hover > a {
+  color:#09C;
+}
+.lowerPart ol > li:hover > ul {
+  display:block;
+}
+.lowerPart ol > li > ul {
+  display:none;
+  list-style-type:none;
+  padding:0;
+  margin:0;
+}
+.lowerPart ol > li > ul > li {
+  position:relative;
+  background-color:#EEE;
+}
+.lowerPart ol > li > ul > li > a {
+  border-top:1px solid #FFF;
+}
+.lowerPart ol > li > ul > li:hover {
+  background-color:#DDD;
+}
+.lowerPart ol > li > ul > li:hover > a {
+  color:#09C;
 }
 
