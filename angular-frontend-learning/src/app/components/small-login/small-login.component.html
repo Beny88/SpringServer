@@ -9,12 +9,13 @@
       <div>
         <input type="text" name="password" placeholder="password" [(ngModel)]="password">
       </div>
-
-      <div>
-        <button (click)="signIn()">Zaloguj Sie >></button>
-      </div>
-      <div>
-        <button (click)="register()">Register >></button>
+      <div class="buttons">
+        <div class="small-login-button">
+         <button (click)="signIn()">Zaloguj Sie >></button>
+        </div>
+        <div class ="small-register-button">
+          <button (click)="register()">Register >></button>
+        </div>
       </div>
     </form>
   </a>

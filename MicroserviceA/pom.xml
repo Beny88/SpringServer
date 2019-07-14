@@ -118,6 +118,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-firestore</artifactId>
+            <version>1.11.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
