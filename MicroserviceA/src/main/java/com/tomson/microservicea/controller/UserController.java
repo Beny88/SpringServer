@@ -27,7 +27,6 @@ public class UserController {
 	public User getUser(@PathVariable(value = "id") Long userId) {
 		return userService.getUser(userId);
 	}
-
 	@GetMapping
 	public List<User> getUsers() {
 		return userService.getUsers();
@@ -44,7 +43,7 @@ public class UserController {
 		return userService.updateUser(user);
 	}
 
-	@PostMapping("/{userId}/address")
+	@PostMapping("/{userId/address")
 	public Address createAddress(@RequestBody final CreateAddressDto address, @PathVariable Long userId){
 		return userService.createAddress(address, userId);
 	}

@@ -11,6 +11,10 @@ import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForherComponent } from './pages/forher/forher.component';
 import { SmallLoginComponent } from './components/small-login/small-login.component';
+import { HttpClientModule} from '@angular/common/http';
+import {ProductService} from "./service/product.service";
+import { PagesComponent } from './pages/pages.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,19 @@ import { SmallLoginComponent } from './components/small-login/small-login.compon
     LoginComponent,
     RegisterComponent,
     ForherComponent,
-    SmallLoginComponent
+    SmallLoginComponent,
+    PagesComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
